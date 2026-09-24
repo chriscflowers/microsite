@@ -86,6 +86,506 @@
     padding:22px;
   }
   .scope-panel .cap{font-size:12px; color:#93a0cc; text-transform:none; margin-bottom:14px;}
+  .waveform{width:100%; height:auto; display:block;}
+  .scope-legend{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#7f8ab0; margin-top:8px;}
+
+  /* SECTION shared */
+  section{padding:64px 0;}
+  .section-head{max-width:640px; margin-bottom:36px;}
+  .kicker{font-size:12.5px; color:var(--blue-600); font-weight:600; margin-bottom:8px;}
+  .section-head h2{font-size:28px;}
+  .section-head p{margin-top:12px; color:var(--slate-600); font-size:15.5px;}
+
+  /* SCENARIO */
+  .facility-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:760px){.facility-grid{grid-template-columns:1fr;}}
+  .facility-card{background:var(--panel); border:1px solid var(--slate-200); border-radius:var(--radius); padding:24px;}
+  .facility-card h3{font-size:18px;}
+  .facility-card .tag{display:inline-block; font-size:11.5px; font-family:'IBM Plex Mono',monospace; color:var(--blue-600); background:#eaf2ff; padding:3px 8px; border-radius:5px; margin-bottom:12px;}
+  .facility-card ul{margin:14px 0 0; padding-left:18px; color:var(--slate-600); font-size:14px;}
+  .facility-card li{margin-bottom:5px;}
+
+  /* DOC TYPES */
+  .doctype-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){.doctype-grid{grid-template-columns:1fr;}}
+  .doctype-card{background:var(--panel); border:1px solid var(--slate-200); border-radius:var(--radius); padding:22px; display:flex; flex-direction:column; gap:12px;}
+  .doctype-card .icon{width:38px;height:38px;border-radius:8px;background:var(--navy-900);display:flex;align-items:center;justify-content:center;}
+  .doctype-card .icon svg{width:20px;height:20px;stroke:#fff;fill:none;}
+  .doctype-card h4{font-size:16px;}
+  .doctype-card p{color:var(--slate-600); font-size:14px;}
+  .doctype-card .fields{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .doctype-card .fields span{font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:var(--bg); border:1px solid var(--slate-200); color:var(--slate-600); padding:3px 7px; border-radius:5px;}
+
+  /* ASSET REGISTER */
+  .asset-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:900px){.asset-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.asset-grid{grid-template-columns:1fr;}}
+  .asset-card{background:var(--panel); border:1px solid var(--slate-200); border-radius:var(--radius); padding:16px; position:relative;}
+  .asset-card .top{display:flex; justify-content:space-between; align-items:flex-start;}
+  .asset-card .id{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--slate-400);}
+  .asset-card h5{font-size:14.5px; margin-top:6px;}
+  .asset-card .facility{font-size:12px; color:var(--slate-600); margin-top:2px;}
+  .chip{font-size:10.5px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;}
+  .chip.green{background:var(--green-bg); color:var(--green);}
+  .chip.yellow{background:var(--amber-bg); color:var(--amber);}
+  .chip.red{background:var(--red-bg); color:var(--red);}
+
+  /* TIMELINE */
+  .timeline{position:relative; margin-top:8px; padding-left:28px; border-left:2px solid var(--slate-200);}
+  .t-item{position:relative; padding-bottom:26px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-dot{position:absolute; left:-35px; top:3px; width:14px; height:14px; border-radius:50%; border:3px solid #fff; box-shadow:0 0 0 2px currentColor;}
+  .t-dot.green{color:var(--green); background:var(--green);}
+  .t-dot.yellow{color:var(--amber); background:var(--amber);}
+  .t-dot.red{color:var(--red); background:var(--red);}
+  .t-card{background:var(--panel); border:1px solid var(--slate-200); border-radius:var(--radius); padding:16px 18px;}
+  .t-card summary{cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; font-weight:600; font-size:14.5px;}
+  .t-card summary::-webkit-details-marker{display:none;}
+  .t-card summary .date{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:12px; color:var(--slate-400); min-width:96px;}
+  .t-card summary .title{flex:1;}
+  .t-card summary .arrow{transition:transform .18s ease; color:var(--slate-400);}
+  .t-card[open] summary .arrow{transform:rotate(90deg);}
+  .t-card .body{margin-top:12px; padding-top:12px; border-top:1px solid var(--slate-200); color:var(--slate-600); font-size:14px;}
+  .t-card .body .src{display:inline-block; margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--blue-600); background:#eaf2ff; padding:3px 8px; border-radius:5px;}
+  .callout{margin-top:18px; background:#fff8ec; border:1px solid #f0d9a8; border-radius:var(--radius); padding:16px 18px; font-size:14px; color:#6b5006;}
+  .callout b{color:#4d3900;}
+
+  /* AVIATOR CHAT */
+  .chat-shell{background:var(--navy-950); border-radius:14px; padding:22px; color:#fff;}
+  .chat-shell .chat-top{display:flex; align-items:center; gap:8px; margin-bottom:18px; font-size:12.5px; color:#8f9ac2;}
+  .chat-shell .chat-top .dot{width:8px;height:8px;border-radius:50%;background:var(--blue-500);}
+  .msg{max-width:78%; margin-bottom:14px; font-size:14px;}
+  .msg.user{margin-left:auto; text-align:right;}
+  .msg.user .bubble{background:var(--blue-600); color:#fff; border-radius:12px 12px 3px 12px; padding:10px 14px; display:inline-block; text-align:left;}
+  .msg.bot .bubble{background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:3px 12px 12px 12px; padding:12px 15px; color:#dfe3f3;}
+  .msg.bot .cites{margin-top:9px; display:flex; gap:6px; flex-wrap:wrap;}
+  .msg.bot .cites span{font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:rgba(0,117,252,0.16); color:#8fc2ff; padding:3px 8px; border-radius:5px; border:1px solid rgba(0,117,252,0.35);}
+
+  /* CAPABILITIES */
+  .cap-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:900px){.cap-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.cap-grid{grid-template-columns:1fr;}}
+  .cap-card{padding:20px 0 0; border-top:2px solid var(--navy-900);}
+  .cap-card h4{font-size:15px; margin-bottom:8px;}
+  .cap-card p{font-size:13.5px; color:var(--slate-600);}
+
+  .t-gap{margin:0 0 26px; padding:9px 13px; border:1px dashed #e2c98a; background:#fffaf0; border-radius:8px; font-size:12.5px; color:#7a5a08;}
+  .t-card .body .src.sop{color:var(--green); background:var(--green-bg); margin-left:6px;}
+  .t-card .body .src.warn{color:var(--red); background:var(--red-bg); margin-left:6px;}
+  .matrix-wrap{overflow-x:auto;}
+  table.matrix{width:100%; min-width:720px; border-collapse:collapse; background:var(--panel); border:1px solid var(--slate-200); font-size:13.5px;}
+  .matrix th,.matrix td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--slate-200); vertical-align:top;}
+  .matrix th{font-size:12px; color:var(--slate-600); background:var(--bg); font-weight:600;}
+  .matrix td.yes{color:var(--green);} .matrix td.no{color:var(--slate-400);} .matrix td.bad{color:var(--red);}
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px;}
+  .chips span{font-family:'IBM Plex Mono',monospace; font-size:11px; background:var(--red-bg); color:var(--red); padding:3px 8px; border-radius:5px;}
+  .srcrow{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+  .srcrow span{font-family:'IBM Plex Mono',monospace; font-size:11px; background:#eaf2ff; color:var(--blue-600); padding:4px 9px; border-radius:5px;}
+  .flow{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:900px){.flow{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.flow{grid-template-columns:1fr;}}
+  .flow .step{background:var(--panel); border:1px solid var(--slate-200); border-radius:var(--radius); padding:16px;}
+  .flow .n{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--blue-600);}
+  .flow h4{font-size:15px; margin:6px 0;} .flow p{font-size:13px; color:var(--slate-600);}
+  .handoff{display:grid; grid-template-columns:1.25fr 0.75fr; gap:20px; margin-top:22px;}
+  @media (max-width:900px){.handoff{grid-template-columns:1fr;}}
+  pre.json{margin:0; background:var(--navy-950); color:#cfd6f0; border-radius:12px; padding:18px; font-size:12px; line-height:1.55; overflow-x:auto; font-family:'IBM Plex Mono',monospace;}
+  .handoff .note{background:var(--panel); border:1px solid var(--slate-200); border-radius:var(--radius); padding:18px; font-size:14px; color:var(--slate-600);}
+  .handoff .note p+p{margin-top:10px;}
+  footer{background:var(--navy-950); color:#93a0cc; padding:34px 0; font-size:13px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  footer strong{color:#fff;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><div>OpenText™ Content Aviator<small>Asset condition intelligence — demo scenario</small></div></div>
+    <div class="navlinks">
+      <a href="#scenario">Scenario</a>
+      <a href="#documents">Document types</a>
+      <a href="#register">Asset register</a>
+      <a href="#timeline">Investigation</a>
+      <a href="#alignment">SOP alignment</a>
+      <a href="#agent">Agent</a>
+      <a href="#ask">Ask Aviator</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow-line"><span class="rule"></span>Demo scenario</div>
+      <h1>Two plants, eight assets, one <span>turbine that keeps talking back.</span></h1>
+      <p class="sub">This microsite walks through a sample corpus of condition reports, maintenance records, an equipment manual, and three SOPs from two power facilities — and shows how Content Aviator turns scattered inspection paperwork into an asset history you can question in plain language.</p>
+      <div class="hero-stats">
+        <div><div class="num">22</div><div class="lbl">source documents</div></div>
+        <div><div class="num">02</div><div class="lbl">facilities</div></div>
+        <div><div class="num">08</div><div class="lbl">tracked assets</div></div>
+        <div><div class="num">07yr</div><div class="lbl">span of records</div></div>
+      </div>
+    </div>
+    <div class="scope-panel">
+      <div class="cap">Bearing 1 (Drive End) velocity, mm/s RMS — the two MTG-001 units, 2018–2025</div>
+      <svg class="waveform" viewBox="0 0 480 160" role="img" aria-label="Bearing 1 vibration readings for two turbines against the 3.5 mm/s action threshold">
+        <line x1="30" y1="39" x2="475" y2="39" stroke="rgba(240,110,95,0.75)" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="34" y="33" fill="#f08a80" font-size="9" font-family="IBM Plex Mono, monospace">3.5 manual action threshold</text>
+        <line x1="30" y1="135" x2="475" y2="135" stroke="rgba(255,255,255,0.15)"/>
+        <line x1="75.9" y1="18" x2="75.9" y2="135" stroke="rgba(194,59,48,0.6)"/>
+        <line x1="425.6" y1="18" x2="425.6" y2="135" stroke="rgba(194,59,48,0.6)"/>
+        <text x="79" y="128" fill="#f08a80" font-size="8.5" font-family="IBM Plex Mono, monospace">Red Feb 2019</text>
+        <text x="422" y="128" fill="#f08a80" font-size="8.5" font-family="IBM Plex Mono, monospace" text-anchor="end">Red Oct 2024</text>
+        <polyline points="42.4,106.2 59.1,53.4" fill="none" stroke="#0075fc" stroke-width="2.5"/>
+        <polyline points="59.1,53.4 343.1,77.4 446.6,96.6" fill="none" stroke="#0075fc" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.7"/>
+        <polyline points="446.6,96.6 451.6,106.2 457.8,115.8" fill="none" stroke="#0075fc" stroke-width="2.5"/>
+        <polyline points="265.6,111 358.6,58.2" fill="none" stroke="#e0a030" stroke-width="2"/>
+        <g fill="#0075fc"><circle cx="42.4" cy="106.2" r="3.5"/><circle cx="59.1" cy="53.4" r="3.5"/><circle cx="343.1" cy="77.4" r="3.5"/><circle cx="446.6" cy="96.6" r="3.5"/><circle cx="451.6" cy="106.2" r="3.5"/><circle cx="457.8" cy="115.8" r="3.5"/></g>
+        <g fill="#e0a030"><circle cx="265.6" cy="111" r="3.5"/><circle cx="358.6" cy="58.2" r="3.5"/></g>
+        <g fill="#dfe3f3" font-size="9" font-family="IBM Plex Mono, monospace"><text x="42" y="120" text-anchor="middle">2.1</text><text x="63" y="51">3.2</text><text x="336" y="72">2.7</text><text x="362" y="56">3.1</text><text x="462" y="119">1.9</text></g>
+        <g fill="#7f8ab0" font-size="9" font-family="IBM Plex Mono, monospace" text-anchor="middle"><text x="67" y="152">2019</text><text x="191" y="152">2021</text><text x="315" y="152">2023</text><text x="439" y="152">2025</text></g>
+      </svg>
+      <div class="scope-legend"><span><b style="color:#0075fc">●</b> Pickney Hills 4688</span><span><b style="color:#e0a030">●</b> Grand Boulee 4600</span><span>dashed = no records</span></div>
+      <div style="font-size:12.5px; color:#b9c0da; margin-top:12px;">No numeric reading in the document set exceeds 3.5 — yet the Pickney Hills unit went Red twice.</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="scenario">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">The scenario</div>
+        <h2>An asset history spread across three document types</h2>
+        <p>Pickney Hills and Grand Boulee run overlapping fleets of rotating and electrical equipment. Each facility's maintenance team files its own condition reports and work records, in its own format, on its own schedule — the way most plants actually do it. Nothing here has been pre-organized into a single asset file.</p>
+      </div>
+      <div class="facility-grid">
+        <div class="facility-card">
+          <span class="tag">FACILITY 01</span>
+          <h3>Pickney Hills</h3>
+          <p style="color:var(--slate-600); font-size:14px; margin-top:8px;">Home to Main Turbine Generator MTG-001 (Asset ID 4688) — the asset at the center of this demo, inspected repeatedly since 2018 — plus Reactor Vessel RV-001.</p>
+          <ul>
+            <li>MTG-001: 7 condition reports, 3 maintenance records</li>
+            <li>RV-001: 1 condition report (loose part, Red)</li>
+          </ul>
+        </div>
+        <div class="facility-card">
+          <span class="tag">FACILITY 02</span>
+          <h3>Grand Boulee</h3>
+          <p style="color:var(--slate-600); font-size:14px; margin-top:8px;">A broader equipment fleet — pumps, valves, steam generation, backup power, and switchgear — plus its own turbine generator that happens to share the name MTG-001.</p>
+          <ul>
+            <li>RCP-002, CIV-003, SG-001, EDG-002, SWG-001 — one report each</li>
+            <li>MTG-001 (Asset ID 4600) — 2 condition reports, distinct unit from Pickney Hills'</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="documents" style="background:var(--panel); border-top:1px solid var(--slate-200); border-bottom:1px solid var(--slate-200);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">What Aviator reads</div>
+        <h2>Three document types, one searchable asset history</h2>
+        <p>Content Aviator doesn't need these documents restructured before it can use them. It reads each type for what it is, and links them by asset ID, facility, and date.</p>
+      </div>
+      <div class="doctype-grid">
+        <div class="doctype-card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M7 3h8l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 16h6M9 10h3"/></svg></div>
+          <h4>Condition reports</h4>
+          <p>Point-in-time assessments with a Green / Yellow / Red rating, component-by-component findings, vibration and insulation data tables, corrective actions, and, on some reports, a communications log of who was told what.</p>
+          <div class="fields"><span>Condition rating</span><span>Vibration data</span><span>Root cause</span><span>Distribution list</span></div>
+        </div>
+        <div class="doctype-card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h4>Maintenance records</h4>
+          <p>Technician-logged routine activity — checks performed, month-over-month trend charts for vibration and polarization index, and any follow-up recommendations.</p>
+          <div class="fields"><span>Activities performed</span><span>Trend charts</span><span>Technician</span><span>Follow-ups</span></div>
+        </div>
+        <div class="doctype-card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <h4>Manual &amp; SOPs</h4>
+          <p>The MTG manual defines the acceptable ranges every inspection is measured against. SOP 1 and SOP 2 cover emergency inspection and shutdown, and the Condition Reports SOP defines the Green / Yellow / Red scale. Four documents in all.</p>
+          <div class="fields"><span>Acceptable ranges</span><span>Action thresholds</span><span>Rating definitions</span><span>Emergency procedures</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Asset register</div>
+        <h2>Current condition, at a glance</h2>
+        <p>Latest reported status for each asset in the corpus, pulled from its most recent condition report or maintenance record.</p>
+      </div>
+      <div class="asset-grid">
+        <div class="asset-card"><div class="top"><span class="id">4688 · Pickney Hills</span><span class="chip red">Last CR: Red</span></div><h5>Main Turbine Generator</h5><div class="facility">MTG-001 — Jun 2025 maintenance record clean, but no condition report closes the Oct 2024 Red</div></div>
+        <div class="asset-card"><div class="top"><span class="id">RV-001 · Pickney Hills</span><span class="chip red">Red</span></div><h5>Reactor Vessel</h5><div class="facility">Loose bolt found during refueling outage</div></div>
+        <div class="asset-card"><div class="top"><span class="id">4600 · Grand Boulee</span><span class="chip yellow">Yellow</span></div><h5>Main Turbine Generator</h5><div class="facility">MTG-001 — trending vibration, monitoring</div></div>
+        <div class="asset-card"><div class="top"><span class="id">RCP-002 · Grand Boulee</span><span class="chip green">Green</span></div><h5>Reactor Coolant Pump</h5><div class="facility">Routine inspection, no findings</div></div>
+        <div class="asset-card"><div class="top"><span class="id">CIV-003 · Grand Boulee</span><span class="chip yellow">Yellow</span></div><h5>Containment Isolation Valve</h5><div class="facility">Minor seal leakage on cycling</div></div>
+        <div class="asset-card"><div class="top"><span class="id">SG-001 · Grand Boulee</span><span class="chip red">Red</span></div><h5>Steam Generator</h5><div class="facility">Tube degradation, power reduced</div></div>
+        <div class="asset-card"><div class="top"><span class="id">EDG-002 · Grand Boulee</span><span class="chip green">Green</span></div><h5>Emergency Diesel Generator</h5><div class="facility">Routine inspection, no findings</div></div>
+        <div class="asset-card"><div class="top"><span class="id">SWG-001 · Grand Boulee</span><span class="chip yellow">Yellow</span></div><h5>Electrical Switchgear</h5><div class="facility">Connections tightened, monitor hotspots</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" style="background:var(--panel); border-top:1px solid var(--slate-200); border-bottom:1px solid var(--slate-200);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">The investigation</div>
+        <h2>MTG-001 (Pickney Hills, Asset 4688): seven years, ten documents, one recurring pattern</h2>
+        <p>Read individually, each report looks routine. Read together, they show vibration climbing before both failures without ever crossing the manual's 3.5 threshold. This is the kind of pattern Aviator surfaces automatically when you ask it about an asset — expand each entry for what was actually found.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item"><span class="t-dot green"></span>
+          <details class="t-card"><summary><span class="date">Aug 2018</span><span class="title">Green — baseline inspection, all readings nominal</span><span class="arrow">›</span></summary>
+            <div class="body">Rotor blades, stator windings, bearings, and seals all within normal limits. Bearing 1 vibration: 2.1 mm/s RMS. Establishes the healthy baseline everything after it is measured against.<span class="src">CR01_MTG-001</span></div>
+          </details>
+        </div>
+        <div class="t-item"><span class="t-dot yellow"></span>
+          <details class="t-card"><summary><span class="date">Nov 2018</span><span class="title">Yellow — vibration elevated, insulation flagged &quot;Below Limit&quot;</span><span class="arrow">›</span></summary>
+            <div class="body">Bearing 1 vibration rises to 3.2 mm/s RMS (stator housing 3.4), still under the manual's 3.5 threshold. Stator insulation reads 1,750–1,850 MΩ and is flagged "Below Limit", though the manual's floor is 1,000 MΩ. Follow-up testing and a heat-exchanger cleaning are scheduled.<span class="src">CR02_MTG-001</span></div>
+          </details>
+        </div>
+        <div class="t-item"><span class="t-dot red"></span>
+          <details class="t-card"><summary><span class="date">Feb 2019</span><span class="title">Red — emergency shutdown, cracked rotor blades</span><span class="arrow">›</span></summary>
+            <div class="body">The Yellow trend from November progressed to visible cracks in multiple rotor blades, overheated stator insulation, and cavitation damage in the cooling system. Unit shut down; full rotor, stator, and bearing replacement ordered.<span class="src">CR03_MTG-001</span><span class="src sop">Cites SOP 1 + SOP 2</span></div>
+          </details>
+        </div>
+        <div class="t-item"><span class="t-dot green"></span>
+          <details class="t-card"><summary><span class="date">May 2020</span><span class="title">Green — returned to service after full rebuild</span><span class="arrow">›</span></summary>
+            <div class="body">Rotor, stator windings, bearings, seals, and control software all replaced or renewed. Commissioning tests confirm the unit meets acceptance criteria before return to service.<span class="src">CR04_MTG-001</span></div>
+          </details>
+        </div>
+        <div class="t-item"><span class="t-dot yellow"></span>
+          <details class="t-card"><summary><span class="date">Aug 2020</span><span class="title">Yellow — early wear reappears three months post-rebuild</span><span class="arrow">›</span></summary>
+            <div class="body">Modest vibration increase and a seal beginning to leak. Still within limits, but the maintenance team schedules closer monitoring rather than waiting for the next routine cycle.<span class="src">CR05_MTG-001</span></div>
+          </details>
+        </div>
+        <div class="t-gap"><b>Gap:</b> no Pickney Hills records for about 34 months (Aug 2020 – Jun 2023). The manual calls for quarterly vibration and insulation testing.</div>
+        <div class="t-item"><span class="t-dot yellow"></span>
+          <details class="t-card"><summary><span class="date">Jun 2023</span><span class="title">Yellow — vibration trending up, still below the 3.5 threshold</span><span class="arrow">›</span></summary>
+            <div class="body">Bearing 1 reads 2.7 mm/s RMS, reported as up from 2.0 against a "2022 baseline" — but those baseline figures match a Grand Boulee report (CR13) exactly. All values stay below 3.5. Borescope finds minor deposits, no cracking. Engineering flags possible foreign material from a prior outage — a hypothesis that turns out to matter.<span class="src">CR12_MTG-001</span><span class="src sop">Cites SOP 1 (emergency) + manual</span><span class="src warn">Baseline from CR13 (other unit)</span></div>
+          </details>
+        </div>
+        <div class="t-gap"><b>Gap:</b> CR12 ordered monthly vibration monitoring; the document set holds no monitoring records before CR15.</div>
+        <div class="t-item"><span class="t-dot red"></span>
+          <details class="t-card"><summary><span class="date">Oct 2024</span><span class="title">Red — foreign object confirmed lodged in the turbine</span><span class="arrow">›</span></summary>
+            <div class="body">Vibration in the low-pressure section spikes again. Borescope inspection recovers a metallic object between rotor blades, consistent with the foreign-material hypothesis raised sixteen months earlier. Preliminary finding: it likely entered during a prior maintenance outage. CR15 cites CR14 as its prior vibration record, another Grand Boulee report.<span class="src">CR15_MTG-001</span><span class="src warn">Cites CR14 (other unit)</span><span class="src warn">No SOP cited</span></div>
+          </details>
+        </div>
+        <div class="t-gap"><b>Gap:</b> no document records the repair or return to service, and no condition report closes the Oct 2024 Red (CR04 did this after 2019).</div>
+        <div class="t-item"><span class="t-dot green"></span>
+          <details class="t-card"><summary><span class="date">Apr – Jun 2025</span><span class="title">Clean maintenance records — vibration back down</span><span class="arrow">›</span></summary>
+            <div class="body">Bearing 1 vibration trends down (2.3 → 2.1 → 1.9 mm/s RMS for Feb, Mar and Apr 2025, per MR_16543). The May and June records report no findings but carry no vibration figures.<span class="src">MR_16543 · MR_23332 · MR_30908</span></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="callout"><b>What a document-by-document read would miss:</b> two reports point at the wrong turbine. CR12 (June 2023) cites CR13 as its 2022 baseline, and its baseline vibration figures match CR13 exactly, but CR13 is a Grand Boulee report. CR15 (Oct 2024) likewise cites CR14, also Grand Boulee (Asset 4600). CR13's own Asset ID field just reads "MTG-001", so identity only resolves through facility. Aviator resolves asset identity by facility and asset ID, not just the label on the page.</div>
+    </div>
+  </section>
+
+  <section id="alignment" style="background:var(--panel); border-top:1px solid var(--slate-200); border-bottom:1px solid var(--slate-200);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">SOP alignment</div>
+        <h2>Which documents actually cover the three parameters</h2>
+        <p>The agent checks whether vibration, temperature and insulation resistance monitoring are described, then compares that guidance with what the records show. Only the manual defines them; the SOPs describe response, not measurement.</p>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <tr><th>Parameter</th><th>MTG manual</th><th>SOP 1 · Emergency inspection</th><th>SOP 2 · Emergency shutdown</th><th>Condition Reports SOP</th><th>What the records show</th></tr>
+          <tr><td>Vibration</td><td class="yes">Below 3.5 mm/s RMS; spectral analysis above</td><td class="no">CMS data only</td><td class="no">Not covered</td><td class="no">Not covered</td><td class="bad">Numbers in 6 of 12 turbine records; 3.5 never crossed</td></tr>
+          <tr><td>Temperature</td><td class="yes">Bearing below 80°C (infrared)</td><td class="no">Not covered</td><td class="no">Not covered</td><td class="no">Not covered</td><td class="bad">Bearing temperature is never given as a number, only "normal"</td></tr>
+          <tr><td>Insulation resistance</td><td class="yes">Above 1,000 MΩ; corrective actions listed</td><td class="no">Not covered</td><td class="no">Not covered</td><td class="no">Not covered</td><td class="bad">MΩ values in 4 of 12; flagged "Below Limit" at about 1,800 MΩ</td></tr>
+        </table>
+      </div>
+      <p style="margin-top:22px; font-size:14px; color:var(--slate-600);">Reports cite six procedures that are not in the document set, and they are the ones that would cover the parameters above:</p>
+      <div class="chips"><span>SOP 3 Vibration Diagnostic (CR02)</span><span>SOP 4 Insulation Testing (CR02)</span><span>SOP-MTG-01 (CR13)</span><span>SOP-ELE-05 (CR13)</span><span>SOP-VIB-02 (CR14)</span><span>SOP-MTG-04 (CR14)</span></div>
+      <p style="font-size:14px; color:var(--slate-600);">The Condition Reports SOP requires distribution to Maintenance, Engineering, Asset Management and plant personnel. Only 5 of 15 reports carry a communications log, none reach Asset Management, and none of the four Red reports has one.</p>
+    </div>
+  </section>
+
+  <section id="agent">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">The evaluation agent</div>
+        <h2>From documents to a traceable asset assessment</h2>
+        <p>An Aviator Studio agent reads three knowledge sources, works through four analysis tasks using only those documents, and writes its conclusions as structured JSON. A second step turns that JSON into a report without adding interpretation.</p>
+      </div>
+      <div class="srcrow"><span>cfConditionReport · 15 reports</span><span>cfMaintenanceRecord · 3 records</span><span>cfSOP · manual + 3 SOPs</span></div>
+      <div class="flow">
+        <div class="step"><div class="n">Task 1</div><h4>Current status</h4><p>Takes the most recent condition report: rating, date, key findings, and trend if there are several.</p></div>
+        <div class="step"><div class="n">Task 2</div><h4>Maintenance correlation</h4><p>Summarizes maintenance activity and notes where it agrees with, or missed, what the reports found.</p></div>
+        <div class="step"><div class="n">Task 3</div><h4>Manual and SOP review</h4><p>Checks vibration, temperature and insulation guidance and how well it fits the findings.</p></div>
+        <div class="step"><div class="n">Task 4</div><h4>Consolidated evaluation</h4><p>Asset health, evidence-based correlations, and prioritized next steps.</p></div>
+      </div>
+      <div class="handoff">
+<pre class="json">{
+  "asset": { "id": "4688", "facility": "Pickney Hills",
+             "name": "Main Turbine Generator (MTG-001)" },
+  "current_status": {
+    "rating": "Red", "report": "CR15_MTG-001", "date": "2024-10-12",
+    "key_findings": ["Metallic object between LP rotor blades",
+                     "Immediate shutdown ordered"],
+    "note": "2025 maintenance records show recovery; no condition
+             report closes the Red"
+  },
+  "maintenance": {
+    "records": ["MR_16543", "MR_23332", "MR_30908"],
+    "range": "2025-04-28 to 2025-06-28",
+    "gaps": ["No records Aug 2020 - Jun 2023",
+             "No monitoring records after CR12 ordered monthly checks"]
+  },
+  "sop_alignment": {
+    "vibration": "Manual only (below 3.5 mm/s)",
+    "temperature": "Manual only (below 80 C); no numeric readings",
+    "insulation_resistance": "Manual only (above 1000 MOhm); reports
+                              flag Below Limit at about 1800 MOhm"
+  },
+  "next_steps": [
+    "Issue a condition report re-rating or closing the Oct 2024 Red",
+    "Re-baseline Bearing 1 vibration from Pickney Hills data",
+    "Locate SOP 3, SOP 4 and the other cited procedures",
+    "Record numeric bearing temperatures"
+  ]
+}</pre>
+        <div class="note">
+          <p><b>Step 1 is the authority.</b> The JSON carries every finding and points back to its source document.</p>
+          <p><b>Step 2 is formatting only.</b> The markdown report restates the JSON in a standard layout for operations reviews and executive summaries.</p>
+          <p style="font-size:12.5px; color:var(--slate-400);">Illustrative output written from the source documents on this page, not a live agent run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ask">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Ask Aviator</div>
+        <h2>Investigate the way an engineer would ask</h2>
+        <p>Instead of opening eleven PDFs, a reliability engineer asks Content Aviator directly. Every answer traces back to the report it came from.</p>
+      </div>
+      <div class="chat-shell">
+        <div class="chat-top"><span class="dot"></span>Content Aviator — MTG-001 asset history</div>
+
+        <div class="msg user"><div class="bubble">Has MTG-001 at Pickney Hills had vibration problems before the October 2024 shutdown?</div></div>
+        <div class="msg bot">
+          <div class="bubble">Yes — twice. Bearing 1 vibration exceeded normal range in November 2018, which progressed to a rotor blade failure and emergency shutdown by February 2019. A second climb started around June 2023, when engineering suspected foreign material from a prior outage. That suspicion was confirmed in October 2024, when a borescope inspection found a metallic object lodged between the rotor blades.</div>
+          <div class="cites"><span>CR02_MTG-001</span><span>CR03_MTG-001</span><span>CR12_MTG-001</span><span>CR15_MTG-001</span></div>
+        </div>
+
+        <div class="msg user"><div class="bubble">Compare Bearing 1's current reading to the manual's action threshold.</div></div>
+        <div class="msg bot">
+          <div class="bubble">The MTG manual sets the action threshold at 3.5 mm/s RMS, above which an in-depth spectral analysis is required. The latest maintenance record puts Bearing 1 at 1.9 mm/s RMS as of April 2025 — well within limits, and continuing the downward trend from the October 2024 repair.</div>
+          <div class="cites"><span>Main_Turbine_Generator_Manual</span><span>MR_16543</span></div>
+        </div>
+
+        <div class="msg user"><div class="bubble">Is CR12's reference to CR13 as a baseline actually valid?</div></div>
+        <div class="msg bot">
+          <div class="bubble">No. CR12 (Pickney Hills, Asset 4688) cites CR13 as its 2022 baseline, but CR13 is a Grand Boulee report and CR12's 2022 figures match it exactly. That is a different unit sharing only the MTG-001 name, so the 2.0 → 2.7 trend is unverified. CR15 makes the same mistake with CR14.</div>
+          <div class="cites"><span>CR12_MTG-001</span><span>CR13_MTG-001</span><span>CR14_MTG-001</span><span>CR15_MTG-001</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Why it matters</div>
+        <h2>What this demo is meant to show</h2>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-card">
+          <h4>Natural-language search</h4>
+          <p>Ask about an asset the way you'd ask a colleague, instead of guessing which report filename or folder holds the answer.</p>
+        </div>
+        <div class="cap-card">
+          <h4>Cross-document correlation</h4>
+          <p>Connect a condition report to the maintenance records, manual thresholds, and prior inspections it relates to — even when they're never explicitly linked.</p>
+        </div>
+        <div class="cap-card">
+          <h4>Trend and pattern detection</h4>
+          <p>Notice that a Yellow rating today looks like the Yellow rating that preceded a shutdown five years ago.</p>
+        </div>
+        <div class="cap-card">
+          <h4>Source-cited answers</h4>
+          <p>Every answer points back to the specific report and section it came from, so findings stay auditable, not just plausible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>OpenText™ Content Aviator</strong> — demo scenario built from sample condition reports, maintenance records, an equipment manual, and SOPs.</div>
+    <div>Facilities, assets, and findings above are illustrative only.</div>
+  </div>
+</footer>
+
+</body>
+</html>    line-height:1.55;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-0.01em;}
+  p{margin:0;}
+
+  /* NAV */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(3,11,42,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px;}
+  .brand{display:flex; align-items:center; gap:10px; color:#fff; font-weight:600; font-size:15px;}
+  .brand .dot{width:9px; height:9px; border-radius:50%; background:var(--blue-500); box-shadow:0 0 0 4px rgba(0,117,252,0.25);}
+  .brand small{display:block; font-weight:400; color:var(--slate-400); font-size:11px; margin-top:1px;}
+  .navlinks{display:flex; gap:28px; font-size:13.5px;}
+  .navlinks a{color:#c9cee0; text-decoration:none;}
+  .navlinks a:hover{color:#fff;}
+  @media (max-width:760px){.navlinks{display:none;}}
+
+  /* HERO */
+  .hero{
+    background:radial-gradient(1100px 500px at 78% -10%, #0a1f6b 0%, var(--navy-950) 55%), var(--navy-950);
+    color:#fff;
+    padding:76px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;}
+  @media (max-width:900px){.hero .wrap{grid-template-columns:1fr;}}
+  .eyebrow-line{display:flex;align-items:center;gap:10px;color:var(--blue-500);font-size:13px;margin-bottom:18px;}
+  .eyebrow-line .rule{width:28px;height:1px;background:var(--blue-500);}
+  .hero h1{font-size:42px; line-height:1.14; max-width:560px;}
+  .hero h1 span{color:var(--blue-500);}
+  .hero p.sub{margin-top:18px; max-width:480px; color:#b9c0da; font-size:16px;}
+  .hero-stats{display:flex; gap:28px; margin-top:32px; flex-wrap:wrap;}
+  .hero-stats div{border-left:2px solid rgba(255,255,255,0.15); padding-left:12px;}
+  .hero-stats .num{font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600;}
+  .hero-stats .lbl{font-size:12px; color:#9aa2c0; margin-top:2px;}
+
+  .scope-panel{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:var(--radius);
+    padding:22px;
+  }
+  .scope-panel .cap{font-size:12px; color:#93a0cc; text-transform:none; margin-bottom:14px;}
   .waveform{width:100%; height:120px; display:block;}
   .scope-legend{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#7f8ab0; margin-top:8px;}
 
