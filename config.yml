@@ -1,0 +1,12 @@
+title: OpenText Aviator Demos & Research
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+defaults:
+  - scope:
+      path: "notes"
+    values:
+      layout: note
+exclude:
+  - README.md
